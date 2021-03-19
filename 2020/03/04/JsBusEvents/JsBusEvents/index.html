@@ -16,9 +16,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>post title with whitespace - lzy</title>
-  
-    <meta name="keywords" content="test">
+  <title>JS事件执行机制 - lzy</title>
   
 
   
@@ -210,11 +208,11 @@
             
             
               <li>
-                <a class="menuitem flat-box" href=/lizeyu66.github.io/2020/07/31/about/
+                <a class="menuitem flat-box" href=/lizeyu66.github.io/about/
                   
                   
                   
-                    id="lizeyu66githubio20200731about"
+                    id="lizeyu66githubioabout"
                   >
                   <i class='fas fa-info-circle fa-fw'></i>关于
                 </a>
@@ -226,11 +224,11 @@
             
             
               <li>
-                <a class="menuitem flat-box" href=/lizeyu66.github.io/friends/
+                <a class="menuitem flat-box" href=/lizeyu66.github.io/more/
                   
                   
                   
-                    id="lizeyu66githubiofriends"
+                    id="lizeyu66githubiomore"
                   >
                   <i class='fas fa-link fa-fw'></i>更多
                 </a>
@@ -308,11 +306,11 @@
               
             
               <li>
-                <a class="menuitem flat-box" href=/lizeyu66.github.io/2020/07/31/about/
+                <a class="menuitem flat-box" href=/lizeyu66.github.io/about/
                   
                   
                   
-                    id="lizeyu66githubio20200731about"
+                    id="lizeyu66githubioabout"
                   >
                   <i class='fas fa-info-circle fa-fw'></i>关于
                 </a>
@@ -324,11 +322,11 @@
               
             
               <li>
-                <a class="menuitem flat-box" href=/lizeyu66.github.io/friends/
+                <a class="menuitem flat-box" href=/lizeyu66.github.io/more/
                   
                   
                   
-                    id="lizeyu66githubiofriends"
+                    id="lizeyu66githubiomore"
                   >
                   <i class='fas fa-link fa-fw'></i>更多
                 </a>
@@ -359,9 +357,9 @@
 
 <div id="pjax-data" style="display: none">
   <div id="pjax-ispage">true</div>
-  <div id="pjax-pageTitle">post title with whitespace</div>
+  <div id="pjax-pageTitle">JS事件执行机制</div>
   <div id="pjax-enable-cover">true</div>
-  <div id="pjax-permalink">https://lizeyu66.github.io/2020/07/31/post-title-with-whitespace/</div>
+  <div id="pjax-permalink">https://lizeyu66.github.io/2020/03/04/JsBusEvents/JsBusEvents/</div>
   
   <div id="valine-path">none</div>
   <div id="valine-placeholder">none</div>
@@ -411,8 +409,8 @@
         
           
   <h1 class="title">
-    <a href="/lizeyu66.github.io/2020/07/31/post-title-with-whitespace/">
-      post title with whitespace
+    <a href="/lizeyu66.github.io/2020/03/04/JsBusEvents/JsBusEvents/">
+      JS事件执行机制
     </a>
   </h1>
 
@@ -442,7 +440,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年7月31日</p>
+    <p>发布于：2020年3月4日</p>
   </a>
 </div>
 
@@ -466,7 +464,41 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>先同步后异步<br>遇到new Promise先执行<br>先微任务后宏任务</p>
+<h1 id="宏任务与微任务"><a href="#宏任务与微任务" class="headerlink" title="宏任务与微任务"></a>宏任务与微任务</h1><p>macro-task(宏任务)：包括整体代码script，setTimeout，setInterval, setImmediate（浏览器暂时不支持，只有IE10支持，具体可见MDN）、I/O、UI Rendering。<br>micro-task(微任务)：Promise.then，process.nextTick</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li>一般的JavaScript代码（同步）的属于宏任务，定时器相关的异步代码，包括setTimeOut、setInterval等也属于宏任务，promise.then、 process.nextTick属于微任务；</li>
+<li>同步的代码会按照执行顺序顺序执行，遇到异步代码的时候，属于宏任务的放到宏队列，微任务放到微队列，其中promise需要resolve或者reject才会执行then或者catch里面的内容，其他的放到队列的属于回调函数的内容。</li>
+<li>执行顺序是宏任务-微任务-宏任务……，因为整个脚本就是一个宏任务，所以当里面宏任务和微任务同时放入队列，会先执行玩微任务再执行宏任务；前提是代码执行完毕，如果存在嵌套关系，则会先执行完该任务再执行下一个任务，如果问题复杂建议通过画图来理清楚</li>
+<li>process.nextTick只能在node环境下运行</li>
+</ol>
+<h1 id="async-await-与-Promise"><a href="#async-await-与-Promise" class="headerlink" title="async await 与 Promise"></a>async await 与 Promise</h1><ol>
+<li>async声明的必须是一个function，并且必须紧跟着function </li>
+</ol>
+<p>async function process() {<br>}</p>
+<ol start="2">
+<li>await必须在async声明的函数内部使用，必须是直系</li>
+<li>async生命的函数本质上是一个Promise</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F; 以下三个函数表达的意思一致</span><br><span class="line">const demo &#x3D;(async function() &#123;                                              </span><br><span class="line">  return &#39;我是promise&#39;                  </span><br><span class="line">&#125;) ()                                                                                           </span><br><span class="line"></span><br><span class="line">const demo &#x3D; (async function() &#123;</span><br><span class="line">  return Promise.resolve(&#39;我是promise&#39;)   </span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line">const demo &#x3D;（async function() &#123;</span><br><span class="line">  return new Promise((resolve,reject) &#x3D;&gt; &#123;</span><br><span class="line">      resolve(&#39;我是promise&#39;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)()</span><br><span class="line">&#x2F;&#x2F; 获取返回值的方法</span><br><span class="line">demo.then(res &#x3D;&gt; &#123;</span><br><span class="line">    console.log(res)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>await的本质是提供等同于“同步效果”的等待异步返回能力的语法糖，实质上就是返回一个Promise</li>
+<li>await意为等一会，只要await生命的函数还没有返回，下面的内容就不会被执行，准确的说是用await声明的Promise异步返回，必须等待到有返回值之后，才继续执行以后的代码</li>
+</ol>
+<p><img src="'JsBusEvents/async1.png'"></p>
+<ol start="6">
+<li>async/await的错误处理</li>
+</ol>
+<p><img src="'JsBusEvents/async2.png'"><br><img src="'JsBusEvents/async3.png'"></p>
+<ol>
+<li>async/await的终止程序（中断）</li>
+</ol>
+<p><img src="'JsBusEvents/async4.png'"></p>
+<ul>
+<li>Promise本身是无法终止的，只是一个状态机，包含三种状态pending（挂起）、resolve（成功）、reject（拒绝），一旦发出请求必须结束，无法取消，想要中断的时候直接return 一个值即可，return之后的操作将都会停止</li>
+</ul>
+
           
             <div class='article_footer'>
               
@@ -544,10 +576,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-31T14:06:50+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-17T16:44:50+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年7月31日</p>
+    <p>更新于：2021年3月17日</p>
   </a>
 </div>
 
@@ -555,9 +587,6 @@
       
         
           
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/lizeyu66.github.io/tags/test/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>test</p></a></div>
-
 
         
       
@@ -574,7 +603,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lizeyu66.github.io/2020/07/31/post-title-with-whitespace/&title=post title with whitespace - lzy&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lizeyu66.github.io/2020/03/04/JsBusEvents/JsBusEvents/&title=JS事件执行机制 - lzy&summary="
           
           >
           
@@ -586,7 +615,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lizeyu66.github.io/2020/07/31/post-title-with-whitespace/&title=post title with whitespace - lzy&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lizeyu66.github.io/2020/03/04/JsBusEvents/JsBusEvents/&title=JS事件执行机制 - lzy&summary="
           
           >
           
@@ -598,7 +627,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://lizeyu66.github.io/2020/07/31/post-title-with-whitespace/&title=post title with whitespace - lzy&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://lizeyu66.github.io/2020/03/04/JsBusEvents/JsBusEvents/&title=JS事件执行机制 - lzy&summary="
           
           >
           
@@ -622,7 +651,7 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/lizeyu66.github.io/2020/07/31/about/'>
+              <a class='prev' href='/lizeyu66.github.io/2020/07/31/indexDB/'>
                 <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>indexedDB使用方法</p>
                 <p class='content'>打开数据库/新建数据库indexedDB.open(dbName, version)
 
@@ -671,6 +700,20 @@
     
 
 
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        
+    </div>
+  </section>
 
 
   
