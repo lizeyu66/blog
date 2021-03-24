@@ -39,7 +39,7 @@ var customSearch;
 			$postsBtn.click(e => {
 				e.preventDefault();
 				e.stopPropagation();
-				if($postsBtn.attr("href") != "/")       // TODO: fix it
+				if ($postsBtn.attr("href") != "/")       // TODO: fix it
 					scrolltoElement($bodyAnchor);
 				e.stopImmediatePropagation();
 				$postsBtn.unbind('click');
@@ -71,18 +71,18 @@ var customSearch;
 
 		var showHeaderPoint = 0;
 		if ($coverAnchor[0]) {
-			if(enableCover == "true" && $('.cover.half').css('display') !== 'none') // Pjax 处理
+			if (enableCover == "true" && $('.cover.half').css('display') !== 'none') // Pjax 处理
 				showHeaderPoint = $coverAnchor[0].clientHeight - 180;
 		}
 
 		var pos = document.body.scrollTop;
-		if(enableCover == "true" && $('.cover.half').css('display') === 'none')
+		if (enableCover == "true" && $('.cover.half').css('display') === 'none')
 			pos += 180; // Pjax 处理
 
 		$(document, window).scroll(() => {
 			let scrollTop = $(window).scrollTop();  // 滚动条距离顶部的距离
 
-			if(enableCover == "true" && $('.cover.half').css('display') === 'none')
+			if (enableCover == "true" && $('.cover.half').css('display') === 'none')
 				scrollTop += 180; // Pjax 处理
 
 			const del = scrollTop - pos;
@@ -109,17 +109,17 @@ var customSearch;
 	// 设置导航栏
 	function setHeader() {
 		var HEXO_ISPAGE = $.trim($('#pjax-ispage').text());
-		if(HEXO_ISPAGE == 'true')
-		  window.subData = {
-			title: $.trim($('#pjax-pageTitle').text()),
-			tools: true
-		  }
+		if (HEXO_ISPAGE == 'true')
+			window.subData = {
+				title: $.trim($('#pjax-pageTitle').text()),
+				tools: true
+			}
 
 		if (!window.subData) return;
 		const $wrapper = $('header .wrapper');        // 整个导航栏
 		const $comment = $('.s-comment', $wrapper);   // 评论按钮  桌面端 移动端
 		const $toc = $('.s-toc', $wrapper);           // 目录按钮  仅移动端
-		
+
 		$wrapper.find('.nav-sub .title').text(window.subData.title);   // 二级导航文章标题
 
 		// 决定一二级导航栏的切换
@@ -308,12 +308,12 @@ var customSearch;
 
 		// 监听窗口改变事件
 		let resizeTimer = null;
-		$(window).bind('resize', function (){
+		$(window).bind('resize', function () {
 			if (resizeTimer) clearTimeout(resizeTimer);
-			resizeTimer = setTimeout(function(){
+			resizeTimer = setTimeout(function () {
 				anchor = getAnchor();
 				scrollListener();
-			} , 100);
+			}, 100);
 		});
 
 		scrollListener();
@@ -422,12 +422,84 @@ var customSearch;
 })(jQuery);
 
 /*锚点定位*/
-if(window.location.hash){
-	var checkExist = setInterval(function() {
-	   if (typeof jQuery == 'undefined'){return;}
-	   if ($("#"+decodeURI(window.location.hash.split("#")[1]).replace(/\ /g,"-")).length) {
-		  $('html, body').animate({scrollTop: $("#"+decodeURI(window.location.hash.split("#")[1]).replace(/\ /g,"-")).offset().top-40}, 500);
-		  clearInterval(checkExist);
-	   }
+if (window.location.hash) {
+	var checkExist = setInterval(function () {
+		if (typeof jQuery == 'undefined') { return; }
+		if ($("#" + decodeURI(window.location.hash.split("#")[1]).replace(/\ /g, "-")).length) {
+			$('html, body').animate({ scrollTop: $("#" + decodeURI(window.location.hash.split("#")[1]).replace(/\ /g, "-")).offset().top - 40 }, 500);
+			clearInterval(checkExist);
+		}
 	}, 100);
 }
+
+(function () {
+	var canvas, ctx, width, height, bubbles, animateHeader = true;
+	initHeader();
+	function initHeader() {
+		canvas = document.getElementById('header_canvas');
+		window_resize();
+		ctx = canvas.getContext('2d');
+		//建立泡泡
+		bubbles = [];
+		var num = width * 0.15;//气泡数量
+		for (var i = 0; i < num; i++) {
+			var c = new Bubble();
+			bubbles.push(c);
+		}
+		animate();
+	}
+	function animate() {
+		if (animateHeader) {
+			ctx.clearRect(0, 0, width, height);
+			for (var i in bubbles) {
+				bubbles[i].draw();
+			}
+		}
+		requestAnimationFrame(animate);
+	}
+	function window_resize() {
+		//canvas铺满窗口
+		width = window.innerWidth;
+		height = window.innerHeight;
+
+		// //如果需要铺满内容可以换下面这个
+		// var panel = document.getElementById('header_canvas');
+		// width=panel.offsetWidth;
+		// height=panel.offsetHeight;
+
+		canvas.width = width;
+		canvas.height = height;
+	}
+	window.onresize = function () {
+		window_resize();
+	}
+	function Bubble() {
+		var _this = this;
+		(function () {
+			_this.pos = {};
+			init();
+		})();
+		function init() {
+			_this.pos.x = Math.random() * width;
+			_this.pos.y = height + Math.random() * 100;
+			_this.alpha = 0.1 + Math.random() * 0.5;//气泡透明度
+			_this.alpha_change = 0.0002 + Math.random() * 0.0005;//气泡透明度变化速度
+			_this.scale = 0.2 + Math.random() * 0.1;//气泡大小
+			_this.scale_change = Math.random() * 0.001;//气泡大小变化速度
+			_this.speed = 0.1 + Math.random() * 0.9;//气泡上升速度
+		}
+		//气泡
+		this.draw = function () {
+			if (_this.alpha <= 0) {
+				init();
+			}
+			_this.pos.y -= _this.speed;
+			_this.alpha -= _this.alpha_change;
+			_this.scale += _this.scale_change;
+			ctx.beginPath();
+			ctx.arc(_this.pos.x, _this.pos.y, _this.scale * 10, 0, 2 * Math.PI, false);
+			ctx.fillStyle = 'rgba(255,255,255,' + _this.alpha + ')';
+			ctx.fill();
+		};
+	}
+})();
