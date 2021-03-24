@@ -5,9 +5,7 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="index,follow">
-      
+      <meta name="robots" content="noindex,follow">
     
   
   <!-- 渲染优化 -->
@@ -20,9 +18,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>落花有意</title>
-  
-    <meta name="keywords" content="web前端,vue,小程序,js">
+  <title>标签：javascript - 落花有意</title>
   
 
   
@@ -354,7 +350,7 @@
   
 
 
-              <div class="l_body">
+              <div class="l_body nocover">
                 <div class='body-wrapper' id="pjax-container">
                   
                     <!--此文件用来存放一些不方便取值的变量-->
@@ -377,16 +373,16 @@
 
 <script>
   // 处理封面 此时 jquery 还没加载
-  if ("docs" == "none") { // 移除封面
+  if ("none" == "none") { // 移除封面
     document.getElementsByClassName('cover')[0].style.display = "none";
     document.getElementsByClassName('l_body')[0].classList.add("nocover");
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
   } else {
-    if ("docs" == "blog") { // 半屏
+    if ("none" == "blog") { // 半屏
       document.getElementsByClassName('cover')[0].classList.remove("full");
       document.getElementsByClassName('cover')[0].classList.add("half");
       document.getElementsByClassName('scroll-down')[0].style.display = "none";
-    } else if ("docs" == "docs") { // 全屏
+    } else if ("none" == "docs") { // 全屏
       document.getElementsByClassName('cover')[0].classList.remove("half");
       document.getElementsByClassName('cover')[0].classList.add("full");
       document.getElementsByClassName('scroll-down')[0].style.display = "";
@@ -400,24 +396,14 @@
                       
                         
 
+
 <div class='l_main'>
   
+    
+      
   <section class="post-list ">
     
       
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-          
         
           
         
@@ -545,126 +531,6 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/lizeyu66.github.io/2020/03/23/indexedDB/">
-      indexedDB使用方法
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' href="/" rel="nofollow">
-    <img no-lazy src="">
-    <p>lizeyu</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年3月23日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/lizeyu66.github.io/2020/03/23/indexedDB/" class="leancloud_visitors" data-flag-title="indexedDB使用方法">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
-  
-  <a href="/lizeyu66.github.io/2020/03/23/indexedDB/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/lizeyu66.github.io/2020/03/23/indexedDB/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>IndexedDB简单理解就是前端数据库，提供了一种在用户浏览器中持久存储数据的方法，但是和前端关系型数据不同的是，IndexedDB采用的key-value键值对存储，这种存储形式的数据库查询更简单快速，IndexedDB分别为同步和异步访问提供了单独的API，但是同步API仅提供在web worker内部使用，因此绝大多数情况，我们使用的都是异步API，同时IndexedDB也无法突破同源策略的限制，只能访问在同域下的数据。</p>
-      
-    </div>
-    
-      
-        <a class= "readmore" href="/lizeyu66.github.io/2020/03/23/indexedDB/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
     
   </section>
   
@@ -676,6 +542,8 @@
   
 
 
+    
+  
 </div>
 <aside class='l_side'>
   
@@ -740,7 +608,6 @@
 
 
 </aside>
-
 
 
                 </div>
