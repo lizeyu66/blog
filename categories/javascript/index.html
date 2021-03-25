@@ -18,7 +18,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档 - 落花有意</title>
+  <title>分类：javascript - 落花有意</title>
   
 
   
@@ -350,7 +350,7 @@
   
 
 
-              <div class="l_body">
+              <div class="l_body nocover">
                 <div class='body-wrapper' id="pjax-container">
                   
                     <!--此文件用来存放一些不方便取值的变量-->
@@ -373,16 +373,16 @@
 
 <script>
   // 处理封面 此时 jquery 还没加载
-  if ("blog" == "none") { // 移除封面
+  if ("none" == "none") { // 移除封面
     document.getElementsByClassName('cover')[0].style.display = "none";
     document.getElementsByClassName('l_body')[0].classList.add("nocover");
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
   } else {
-    if ("blog" == "blog") { // 半屏
+    if ("none" == "blog") { // 半屏
       document.getElementsByClassName('cover')[0].classList.remove("full");
       document.getElementsByClassName('cover')[0].classList.add("half");
       document.getElementsByClassName('scroll-down')[0].style.display = "none";
-    } else if ("blog" == "docs") { // 全屏
+    } else if ("none" == "docs") { // 全屏
       document.getElementsByClassName('cover')[0].classList.remove("half");
       document.getElementsByClassName('cover')[0].classList.add("full");
       document.getElementsByClassName('scroll-down')[0].style.display = "";
@@ -396,61 +396,163 @@
                       
                         
 
+
 <div class='l_main'>
-	
-	  <article id="archive-page" class="post article white-box reveal shadow">
-	    <section class="archive">
-	      
-	        
-	          
-						
-							
-		            
-			          <div class="archive-item archive-year mark">
-			            <h2>2021</h2>
-			          </div>
-		      		
-		          <div class="archive-item archive-post mark">
-		            <a class='ai' href="/lizeyu66.github.io/2021/03/23/jsEventLoop/">
-		              <time>03-23</time>
-		              <span class="title">
-		                
-		                  js事件执行机制（EventLoop）
-		                
-		                
-										
-										
-		              </span>
-		            </a>
-		          </div>
-						
-	      
-	          
-						
-							
-		            
-			          <div class="archive-item archive-year mark">
-			            <h2>2020</h2>
-			          </div>
-		      		
-		          <div class="archive-item archive-post mark">
-		            <a class='ai' href="/lizeyu66.github.io/2020/03/23/indexedDB/">
-		              <time>03-23</time>
-		              <span class="title">
-		                
-		                  indexedDB使用方法
-		                
-		                
-										
-										
-		              </span>
-		            </a>
-		          </div>
-						
-	      
-	    </section>
-	  </article>
-	
+  
+    
+      
+  <section class="post-list ">
+    
+      
+        
+          
+        
+      
+    
+    
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
+    <a href="/lizeyu66.github.io/2021/03/23/jsEventLoop/">
+      js事件执行机制（EventLoop）
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lizeyu</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/lizeyu66.github.io/categories/javascript/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>javascript</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年3月23日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/lizeyu66.github.io/2021/03/23/jsEventLoop/" class="leancloud_visitors" data-flag-title="js事件执行机制（EventLoop）">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/lizeyu66.github.io/2021/03/23/jsEventLoop/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/lizeyu66.github.io/2021/03/23/jsEventLoop/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>javascript是一门单线程语言，js任务是一个一个顺序执行，分为同步任务和异步任务，同步任务会进入主线程，异步任务会进入Event Table（事件表），当时间表中的异步任务完成后就会在Event Queue（事件队列）中注册回调函数，主线程任务全部完成后，才会执行Event Queue中的回调，js解析器会不断重复检查主线程执行栈是否为空，然后重复第3步，这就是Event Loop（事件循环）</p>
+      
+    </div>
+    
+      
+        <a class= "readmore" href="/lizeyu66.github.io/2021/03/23/jsEventLoop/">
+          阅读全文 <i class="fas fa-chevron-right"></i>
+        </a>
+      
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+    
+  </section>
+  
+    
+    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+    
+    
+
+  
+
+
+    
+  
+
 </div>
 <aside class='l_side'>
   
@@ -544,14 +646,6 @@
 
 </aside>
 
-
-
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
 
 
                 </div>
