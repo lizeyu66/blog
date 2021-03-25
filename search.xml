@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>使用picGoc存储图片</title>
+      <link href="/lizeyu66.github.io/2021/03/25/picGoc/"/>
+      <url>/lizeyu66.github.io/2021/03/25/picGoc/</url>
+      
+        <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><h2 id="安装与使用"><a href="#安装与使用" class="headerlink" title="安装与使用"></a>安装与使用</h2><p><a href="https://github.com/Molunerfinn/PicGo/releases">点击此处可下载官方版</a></p><ul><li>windows用户可下载最新版的exe文件</li><li>macOS 用户请下载最新版本的 dmg 文件</li><li>Linux 用户请下载 AppImage 文件</li></ul><blockquote><p>安装完成打开软件是如下界面</p></blockquote><p><img src="https://cdn.jsdelivr.net/gh/lizeyu66/blogImage@main/20210325102424.png" alt="主界面"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>js事件执行机制（EventLoop）</title>
       <link href="/lizeyu66.github.io/2021/03/23/jsEventLoop/"/>
       <url>/lizeyu66.github.io/2021/03/23/jsEventLoop/</url>
