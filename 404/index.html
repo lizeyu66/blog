@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="index,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -20,9 +16,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>落花有意</title>
-  
-    <meta name="keywords" content="web前端,vue,小程序,js">
+  <title>404 - 落花有意</title>
   
 
   
@@ -77,7 +71,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover ' style="display: none;">
+    <cover class='cover page' style="display: none;">
       <div class='cover-body'>
   <div class='a'>
     
@@ -386,7 +380,7 @@
   
 
 
-              <div class="l_body">
+              <div class="l_body nocover">
                 <div class='body-wrapper' id="pjax-container">
                   
                     <!--此文件用来存放一些不方便取值的变量-->
@@ -398,7 +392,7 @@
   <div id="pjax-ispage">false</div>
   <div id="pjax-pageTitle"></div>
   <div id="pjax-enable-cover">true</div>
-  <div id="pjax-permalink"></div>
+  <div id="pjax-permalink">https://lizeyu66.github.io/404/index.html</div>
   
   <div id="valine-path">none</div>
   <div id="valine-placeholder">none</div>
@@ -409,16 +403,16 @@
 
 <script>
   // 处理封面 此时 jquery 还没加载
-  if ("docs" == "none") { // 移除封面
+  if ("none" == "none") { // 移除封面
     document.getElementsByClassName('cover')[0].style.display = "none";
     document.getElementsByClassName('l_body')[0].classList.add("nocover");
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
   } else {
-    if ("docs" == "blog") { // 半屏
+    if ("none" == "blog") { // 半屏
       document.getElementsByClassName('cover')[0].classList.remove("full");
       document.getElementsByClassName('cover')[0].classList.add("half");
       document.getElementsByClassName('scroll-down')[0].style.display = "none";
-    } else if ("docs" == "docs") { // 全屏
+    } else if ("none" == "docs") { // 全屏
       document.getElementsByClassName('cover')[0].classList.remove("half");
       document.getElementsByClassName('cover')[0].classList.add("full");
       document.getElementsByClassName('scroll-down')[0].style.display = "";
@@ -434,41 +428,10 @@
 
 <div class='l_main'>
   
-  <section class="post-list ">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="page" class="post white-box reveal shadow article-type-page" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -478,395 +441,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/lizeyu66.github.io/2021/01/23/jsEventLoop/">
-      js事件执行机制（EventLoop）
+  <h1 class="title">
+    <a href="/lizeyu66.github.io/404/index.html">
+      404
     </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' href="/" rel="nofollow">
-    <img no-lazy src="">
-    <p>lizeyu</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/lizeyu66.github.io/categories/javascript/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>javascript</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2021年1月23日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/lizeyu66.github.io/2021/01/23/jsEventLoop/" class="leancloud_visitors" data-flag-title="js事件执行机制（EventLoop）">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
-  
-  <a href="/lizeyu66.github.io/2021/01/23/jsEventLoop/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/lizeyu66.github.io/2021/01/23/jsEventLoop/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>javascript是一门单线程语言，js任务是一个一个顺序执行，分为同步任务和异步任务，同步任务会进入主线程，异步任务会进入Event Table（事件表），当时间表中的异步任务完成后就会在Event Queue（事件队列）中注册回调函数，主线程任务全部完成后，才会执行Event Queue中的回调，js解析器会不断重复检查主线程执行栈是否为空，然后重复第3步，这就是Event Loop（事件循环）</p>
-      
-    </div>
-    
-      
-        <a class= "readmore" href="/lizeyu66.github.io/2021/01/23/jsEventLoop/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/lizeyu66.github.io/2020/04/06/indexedDB/">
-      indexedDB使用方法
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' href="/" rel="nofollow">
-    <img no-lazy src="">
-    <p>lizeyu</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/lizeyu66.github.io/categories/web/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>web</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年4月6日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/lizeyu66.github.io/2020/04/06/indexedDB/" class="leancloud_visitors" data-flag-title="indexedDB使用方法">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
-  
-  <a href="/lizeyu66.github.io/2020/04/06/indexedDB/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/lizeyu66.github.io/2020/04/06/indexedDB/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>IndexedDB简单理解就是前端数据库，提供了一种在用户浏览器中持久存储数据的方法，但是和前端关系型数据不同的是，IndexedDB采用的key-value键值对存储，这种存储形式的数据库查询更简单快速，IndexedDB分别为同步和异步访问提供了单独的API，但是同步API仅提供在web worker内部使用，因此绝大多数情况，我们使用的都是异步API，同时IndexedDB也无法突破同源策略的限制，只能访问在同域下的数据。</p>
-      
-    </div>
-    
-      
-        <a class= "readmore" href="/lizeyu66.github.io/2020/04/06/indexedDB/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/lizeyu66.github.io/2020/03/25/picGoc/">
-      使用picGo存储图片
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' href="/" rel="nofollow">
-    <img no-lazy src="">
-    <p>lizeyu</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/lizeyu66.github.io/categories/image/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>image</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年3月25日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/lizeyu66.github.io/2020/03/25/picGoc/" class="leancloud_visitors" data-flag-title="使用picGo存储图片">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
-  
-  <a href="/lizeyu66.github.io/2020/03/25/picGoc/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/lizeyu66.github.io/2020/03/25/picGoc/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>PicGo是一个用于快速上传图片并获取图片 URL 链接的工具，支持多种图床, 例如七牛图床、腾讯云、又拍云、GitHub、SM. MS、阿里云 OSS、Imgur</p>
-      
-    </div>
-    
-      
-        <a class= "readmore" href="/lizeyu66.github.io/2020/03/25/picGoc/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/lizeyu66.github.io/2020/02/12/hexoNotice/">
-      解决hexo分类和标签页面空白页的问题
-    </a>
-  </h2>
+  </h1>
 
 
         
@@ -894,45 +473,9 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年2月12日</p>
+    <p>发布于：2021年3月26日</p>
   </a>
 </div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/lizeyu66.github.io/2020/02/12/hexoNotice/" class="leancloud_visitors" data-flag-title="解决hexo分类和标签页面空白页的问题">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
-  
-  <a href="/lizeyu66.github.io/2020/02/12/hexoNotice/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/lizeyu66.github.io/2020/02/12/hexoNotice/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
 
             
           
@@ -950,128 +493,142 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <!DOCTYPE html>
+<html>
+    <head>
+         <meta charset="UTF-8" />
+         <title>404</title>
+    </head>
+    <body>
+         <script type="text/javascript" src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js" homePageName="返回首页" homePageUrl="https://lizeyu66.github.io"></script>
+    </body>
+</html>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
       
-        <p>解决hexo分类和标签页面空白页的问题</p>
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-26T13:51:32+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年3月26日</p>
+  </a>
+</div>
+
+        
       
-    </div>
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        <a class= "readmore" href="/lizeyu66.github.io/2020/02/12/hexoNotice/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lizeyu66.github.io/404/index.html&title=404 - 落花有意&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
         </a>
       
     
-  </section>
-</article>
-
-          </div>
-        
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lizeyu66.github.io/404/index.html&title=404 - 落花有意&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
       
     
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://lizeyu66.github.io/404/index.html&title=404 - 落花有意&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
   </section>
+
+
+        
+        
+      </section>
+    </article>
   
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
 
   
+    
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 
 
 </div>
 <aside class='l_side'>
   
   
-    
-    
-
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/lizeyu66.github.io/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/lizeyu66/blogImage@main/20210324181016.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">落花有意</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-  </div>
-</section>
-
-  
 
   
     
     
-  
-
-  <section class="widget category shadow desktop">
-    
-  <header>
-    
-      <a href='categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
 
 
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/lizeyu66.github.io/categories/image/" href="/lizeyu66.github.io/categories/image/"
-            id="lizeyu66githubiocategoriesimage"
-            ><div class='name'>image</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/lizeyu66.github.io/categories/javascript/" href="/lizeyu66.github.io/categories/javascript/"
-            id="lizeyu66githubiocategoriesjavascript"
-            ><div class='name'>javascript</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/lizeyu66.github.io/categories/web/" href="/lizeyu66.github.io/categories/web/"
-            id="lizeyu66githubiocategoriesweb"
-            ><div class='name'>web</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/lizeyu66.github.io/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/lizeyu66.github.io/tags/image/" style="font-size: 14px; color: #999">image</a> <a href="/lizeyu66.github.io/tags/javascript/" style="font-size: 14px; color: #999">javascript</a> <a href="/lizeyu66.github.io/tags/web/" style="font-size: 14px; color: #999">web</a>
-    </div>
-  </section>
-
-
-  
 
   
 
