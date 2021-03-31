@@ -29,6 +29,25 @@
     
     
     <entry>
+      <title>chrome跨域请求携带cookie丢失问题(80版本之后)</title>
+      <link href="/lizeyu66.github.io/2020/04/30/chromeProblem/"/>
+      <url>/lizeyu66.github.io/2020/04/30/chromeProblem/</url>
+      
+        <content type="html"><![CDATA[<h2 id="针对测试环境的解决方法"><a href="#针对测试环境的解决方法" class="headerlink" title="针对测试环境的解决方法"></a>针对测试环境的解决方法</h2><ul><li>打开chrome 输入 chrome://flags/   </li><li>搜索 SameSite by default cookies 以及  Cookies without SameSite must be secure</li><li>将两项都修改为Disabled</li><li>点击relaunch重新加载</li></ul><p><img src="https://cdn.jsdelivr.net/gh/lizeyu66/blogImage@main/20210330135845.png"></p><h2 id="针对正式"><a href="#针对正式" class="headerlink" title="针对正式"></a>针对正式</h2><ul><li>拒绝使用跨域的cookie</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>indexedDB使用方法</title>
       <link href="/lizeyu66.github.io/2020/04/06/indexedDB/"/>
       <url>/lizeyu66.github.io/2020/04/06/indexedDB/</url>
