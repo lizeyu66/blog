@@ -1111,15 +1111,15 @@
     console.log(document.getElementById('gitalk-container'));
     if (document.getElementById('gitalk-container') != null) {
       var gitalk = new Gitalk({
-        clientID: "e9af979a207c22cedb16",
-        clientSecret: "f0c1e2e2a97a17fd4e27dbc37ceb62c5e503396e",
+        clientID: "96aa38ac3adeaab6bea5",
+        clientSecret: "b7708b17cf7fc1f58acf05e7f90d1ae6cab84f29",
         repo: "blogComments",
         owner: "lizeyu66",
         admin: "lizeyu66",
         
         id: decodeURI(location.pathname),      // Ensure uniqueness and length less than 50
         
-        distractionFreeMode: false  // Facebook-like distraction free mode
+        distractionFreeMode: true  // Facebook-like distraction free mode
     });
     gitalk.render('gitalk-container');
   }
