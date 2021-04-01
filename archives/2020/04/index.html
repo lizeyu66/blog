@@ -1527,6 +1527,23 @@
                   <script src="./transaction.js"></script>
                   <script src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog/hexo/js/sakura.js"></script>
                   <script src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog/hexo/js/mouse_click.js"></script>
+                  <script>
+                    var oldTitle = document.title;
+                    var titleTime; //標題恢復計時器
+                    document.addEventListener("visibilitychange", function () {
+                      if (document.hidden) {
+                        document.querySelector("[rel='icon']").setAttribute("href", "/images/icons/favicon-32.png");
+                        document.title = "网站崩溃了！";
+                        clearTimeout(titleTime);
+                      } else {
+                        document.title = "欢迎回来！";
+                        document.querySelector("[rel='icon']").setAttribute("href", "/images/icons/crash.png");
+                        titleTime = setTimeout(function () {
+                          document.title = oldTitle;
+                        }, 1000);
+                      }
+                    });
+                  </script>
         <script src="/lizeyu66.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 
 </html>
