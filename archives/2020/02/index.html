@@ -756,7 +756,7 @@
 
 
     <div class='content'>
-      <a href="/lizeyu66.github.io/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/lizeyu66.github.io/tags/image/" style="font-size: 14px; color: #999">image</a> <a href="/lizeyu66.github.io/tags/javascript/" style="font-size: 14px; color: #999">javascript</a> <a href="/lizeyu66.github.io/tags/web/" style="font-size: 24px; color: #555">web</a>
+      <a href="/lizeyu66.github.io/tags/WEB/" style="font-size: 14px; color: #999">WEB</a> <a href="/lizeyu66.github.io/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/lizeyu66.github.io/tags/image/" style="font-size: 14px; color: #999">image</a> <a href="/lizeyu66.github.io/tags/javascript/" style="font-size: 14px; color: #999">javascript</a> <a href="/lizeyu66.github.io/tags/web/" style="font-size: 24px; color: #555">web</a>
     </div>
   </section>
 
@@ -1429,12 +1429,10 @@
                     var titleTime; //標題恢復計時器
                     document.addEventListener("visibilitychange", function () {
                       if (document.hidden) {
-                        document.querySelector("[rel='icon']").setAttribute("href", "/images/icons/favicon-32.png");
                         document.title = "网站崩溃了！";
                         clearTimeout(titleTime);
                       } else {
                         document.title = "欢迎回来！";
-                        document.querySelector("[rel='icon']").setAttribute("href", "/images/icons/crash.png");
                         titleTime = setTimeout(function () {
                           document.title = oldTitle;
                         }, 1000);

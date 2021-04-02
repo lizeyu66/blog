@@ -15,8 +15,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -28,9 +26,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>标签：WEB - 落花有意</title>
+  <title>webInterview - 落花有意</title>
+  
+    <meta name="keywords" content="WEB">
   
 
+  
+    <meta name="description" content="QUESTION">
   
 
   <!-- feed -->
@@ -83,7 +85,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover ' style="display: none;">
+    <cover class='cover post' style="display: none;">
       <div class='cover-body'>
   <div class='a'>
     
@@ -502,10 +504,10 @@
 
 
 <div id="pjax-data" style="display: none">
-  <div id="pjax-ispage">false</div>
-  <div id="pjax-pageTitle"></div>
+  <div id="pjax-ispage">true</div>
+  <div id="pjax-pageTitle">webInterview</div>
   <div id="pjax-enable-cover">true</div>
-  <div id="pjax-permalink"></div>
+  <div id="pjax-permalink">https://lizeyu66.github.io/2021/03/31/webInterview/</div>
   
   
 </div>
@@ -536,25 +538,12 @@
                       
                         
 
-
 <div class='l_main'>
   
-    
-      
-  <section class="post-list ">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -564,11 +553,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
+  <h1 class="title">
     <a href="/lizeyu66.github.io/2021/03/31/webInterview/">
       webInterview
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -607,23 +596,6 @@
 
             
           
-            
-              
-  
-
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
         </div>
         
           <hr>
@@ -633,64 +605,73 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>QUESTION</p>
-      
-    </div>
-    
-      
-        <a class= "readmore" href="/lizeyu66.github.io/2021/03/31/webInterview/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><ol>
+<li><p>js数据类型以及如何判断数据类型</p>
+<blockquote>
+<p>基本数据类型： string number boolean null undefined symbol<br>引用数据类型：object<br>判断数据类型常用的是typeof、instanceof(可以准确的判断对象的类型)</p>
+</blockquote>
+</li>
+<li><p>作用域和作用域链</p>
+<blockquote>
+<p>含义：定义变量的区域，有一套访问变量的规则，根据这规则来管理浏览器引擎如何在当前作用域和嵌套作用域根据变量进行变量查找<br>作用域的分类：全局作用域、函数作用域、块作用域<br>作用域链： 当js使用一个变量的时候，会先在当前作用域寻找该变量，如何当前作用域找不到，则回到上一级作用域去寻找，以此类推知道找到该变量</p>
+</blockquote>
+</li>
+<li><p>this</p>
+<blockquote>
+<p>在全局范围内, this指向的是window<br>函数中this只想的是调用他的那个对象（箭头函数特殊）<br>构造函数中，this指向的是new出来的新对象<br>call, apply中，this被绑定在指定的对象<br>箭头函数中，this指向的是函数定义时作用域的this</p>
+</blockquote>
+</li>
+<li><p>原型与原型链<br> 4.1 构造函数</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age, job) &#123;</span><br><span class="line">this.name &#x3D; name;</span><br><span class="line">this.age &#x3D; age;</span><br><span class="line">this.job &#x3D; job;</span><br><span class="line">this.sayName &#x3D; function() &#123; alert(this.name) &#125; </span><br><span class="line">&#125;</span><br><span class="line">var person1 &#x3D; new Person(&#39;Zaxlct&#39;, 28, &#39;Software Engineer&#39;);</span><br><span class="line">var person2 &#x3D; new Person(&#39;Mick&#39;, 23, &#39;Doctor&#39;);</span><br></pre></td></tr></table></figure>
 
-          </div>
-        
-      
-    
-  </section>
+<p>   <strong>person1和person2都是person的实例，这两个实例都有一个<i style="color: red">constructor</i>(即构造函数)，该属性指向Person,换句话说就是实例的构造函数属性指向构造函数</strong></p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(person1.constructor &#x3D;&#x3D; Person); &#x2F;&#x2F;true</span><br><span class="line">console.log(person2.constructor &#x3D;&#x3D; Person); &#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
+<p> 4.2 原型对象<br>   js中每定义一个对象（函数也是对象）时，对象中都会包含一些预先定义的属性，当定义函数对象时，就会被包含prototype属性，该属性指向函数的原型对象</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;&#125;</span><br><span class="line">Person.prototype.name &#x3D; &#39;Zaxlct&#39;;</span><br><span class="line">Person.prototype.age  &#x3D; 28;</span><br><span class="line">Person.prototype.job  &#x3D; &#39;Software Engineer&#39;;</span><br><span class="line">Person.prototype.sayName &#x3D; function() &#123;</span><br><span class="line">  alert(this.name);</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">var person1 &#x3D; new Person();</span><br><span class="line">person1.sayName(); &#x2F;&#x2F; &#39;Zaxlct&#39;</span><br><span class="line"></span><br><span class="line">var person2 &#x3D; new Person();</span><br><span class="line">person2.sayName(); &#x2F;&#x2F; &#39;Zaxlct&#39;</span><br><span class="line"></span><br><span class="line">console.log(person1.sayName &#x3D;&#x3D; person2.sayName); &#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
+
+<p>   <strong>每个对象都有_proto_属性，只有函数对象才有prototype属性</strong><br>   那什么是原型对象呢？看如下代码</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype &#x3D; &#123;</span><br><span class="line">  name:  &#39;Zaxlct&#39;,</span><br><span class="line">  age: 28,</span><br><span class="line">  job: &#39;Software Engineer&#39;,</span><br><span class="line">  sayName: function() &#123;</span><br><span class="line">    alert(this.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   原型对象其实就是一个普通对象，其实就是Person.prototype,甚至可以给其赋值 var a = Person.prototype,上述代码中给a添加四个属性name、age、job、sayName,但其实还有一个默认属性construcor</p>
+<blockquote>
+<p>默认情况下，所有原型对象都会有一个构造函数（constructor）属性,这个属性指向prototype所在的函数（Person）</p>
+</blockquote>
+</li>
+</ol>
+
+          
+            <div class='article_footer'>
+              
+                
   
     
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
     
-    
+
+
 
   
 
-
-    
-  
-</div>
-<aside class='l_side'>
-  
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
   <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/lizeyu66.github.io/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/lizeyu66/blogImage@main/20210324181016.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
+      <blockquote>
         
-        
-        
-          <p><span id="jinrishici-sentence">落花有意</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
+      </blockquote>
     
   </div>
 </section>
@@ -700,68 +681,187 @@
   
     
     
+
+<section class="widget qrcode  desktop mobile">
   
 
-  <section class="widget category shadow desktop">
+  <div class='content article-entry'>
+    
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png'
+        
+          height='64px'
+        ></div>
+      
+    
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png'
+        
+          height='64px'
+        ></div>
+      
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-31T18:10:58+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年3月31日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/lizeyu66.github.io/tags/WEB/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>WEB</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lizeyu66.github.io/2021/03/31/webInterview/&title=webInterview - 落花有意&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lizeyu66.github.io/2021/03/31/webInterview/&title=webInterview - 落花有意&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://lizeyu66.github.io/2021/03/31/webInterview/&title=webInterview - 落花有意&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/lizeyu66.github.io/2021/01/23/jsEventLoop/'>
+                <p class='title'>js事件执行机制（EventLoop）<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>概述javascript是一门单线程语言，js任务是一个一个顺序执行，分为同步任务和异步任务，同步任务会进入主线程，异步任务会进入Event Table（事件表），当时间表中的异步任务完成后就会...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="gitalk-container"></div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/lizeyu66.github.io/categories/image/" href="/lizeyu66.github.io/categories/image/"
-            id="lizeyu66githubiocategoriesimage"
-            ><div class='name'>image</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/lizeyu66.github.io/categories/javascript/" href="/lizeyu66.github.io/categories/javascript/"
-            id="lizeyu66githubiocategoriesjavascript"
-            ><div class='name'>javascript</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/lizeyu66.github.io/categories/web/" href="/lizeyu66.github.io/categories/web/"
-            id="lizeyu66githubiocategoriesweb"
-            ><div class='name'>web</div><div class='badge'>(2)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript"><span class="toc-text">JavaScript</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/lizeyu66.github.io/tags/WEB/" style="font-size: 14px; color: #999">WEB</a> <a href="/lizeyu66.github.io/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/lizeyu66.github.io/tags/image/" style="font-size: 14px; color: #999">image</a> <a href="/lizeyu66.github.io/tags/javascript/" style="font-size: 14px; color: #999">javascript</a> <a href="/lizeyu66.github.io/tags/web/" style="font-size: 24px; color: #555">web</a>
-    </div>
-  </section>
-
-
-  
 
   
 
 
 </aside>
+
 
 
                 </div>
@@ -1358,76 +1458,6 @@
 
       // 关于谷歌统计对 SPA 页面的处理：
       // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
-      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
-      
-
-      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
-      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
-      $('script[data-pjax], .pjax-reload script').each(function () {
-        $(this).parent().append($(this).remove());
-      });
-
-      try{
-        pjax_fancybox();
-        
-          
-          if ('.cover') {
-            $('.cover').backstretch("resize");
-          } else {
-            $.backstretch("resize");
-          }
-        
-        
-        
-        
-          pjax_initCopyCode();
-        
-        
-        
-        
-          pjax_gitalk();
-        
-        
-        
-      } catch (e) {
-        console.log(e);
-      }
-      window.HideLoading();
-    });
-
-    document.addEventListener('pjax:error', function (e) {
-      window.HideLoading();
-      window.location.href = e.triggerElement.href;
-    });
-</script>
-
-                            
-              </div>
-              
-                <script src="https://cdn.jsdelivr.net/gh/inkss/common@master/hexo/js/cookie.min.js"></script>
-                <!-- <script src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog/hexo/js/mouse_click.js"></script> -->
-                
-                  <script src="./transaction.js"></script>
-                  <script src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog/hexo/js/sakura.js"></script>
-                  <script src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog/hexo/js/mouse_click.js"></script>
-                  <script>
-                    var oldTitle = document.title;
-                    var titleTime; //標題恢復計時器
-                    document.addEventListener("visibilitychange", function () {
-                      if (document.hidden) {
-                        document.title = "网站崩溃了！";
-                        clearTimeout(titleTime);
-                      } else {
-                        document.title = "欢迎回来！";
-                        titleTime = setTimeout(function () {
-                          document.title = oldTitle;
-                        }, 1000);
-                      }
-                    });
-                  </script>
-        <script src="/lizeyu66.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
-
-</html>以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
       // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
       
 

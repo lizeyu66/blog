@@ -547,7 +547,7 @@
               </div>
               <div class="archive-item all-tags">
                 
-                <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/lizeyu66.github.io/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lizeyu66.github.io/tags/image/" rel="tag">image</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lizeyu66.github.io/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lizeyu66.github.io/tags/web/" rel="tag">web</a><span class="tag-list-count">2</span></li></ul>
+                <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/lizeyu66.github.io/tags/WEB/" rel="tag">WEB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lizeyu66.github.io/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lizeyu66.github.io/tags/image/" rel="tag">image</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lizeyu66.github.io/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lizeyu66.github.io/tags/web/" rel="tag">web</a><span class="tag-list-count">2</span></li></ul>
               </div>
               <br>
               
@@ -1226,12 +1226,10 @@
                     var titleTime; //標題恢復計時器
                     document.addEventListener("visibilitychange", function () {
                       if (document.hidden) {
-                        document.querySelector("[rel='icon']").setAttribute("href", "/images/icons/favicon-32.png");
                         document.title = "网站崩溃了！";
                         clearTimeout(titleTime);
                       } else {
                         document.title = "欢迎回来！";
-                        document.querySelector("[rel='icon']").setAttribute("href", "/images/icons/crash.png");
                         titleTime = setTimeout(function () {
                           document.title = oldTitle;
                         }, 1000);
