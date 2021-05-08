@@ -15,8 +15,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -28,9 +26,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>Category: web - 落花有意</title>
+  <title>webInterview - 落花有意</title>
+  
+    <meta name="keywords" content="WEB">
   
 
+  
+    <meta name="description" content="QUESTION">
   
 
   <!-- feed -->
@@ -84,7 +86,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover ' style="display: none;">
+    <cover class='cover post' style="display: none;">
       <div class='cover-body'>
   <div class='a'>
     
@@ -503,10 +505,10 @@
 
 
 <div id="pjax-data" style="display: none">
-  <div id="pjax-ispage">false</div>
-  <div id="pjax-pageTitle"></div>
+  <div id="pjax-ispage">true</div>
+  <div id="pjax-pageTitle">webInterview</div>
   <div id="pjax-enable-cover">true</div>
-  <div id="pjax-permalink"></div>
+  <div id="pjax-permalink">https://lizeyu66.github.io/2021/03/31/webInterview/</div>
   
   
 </div>
@@ -537,27 +539,12 @@
                       
                         
 
-
 <div class='l_main'>
   
-    
-      
-  <section class="post-list ">
-    
-      
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -567,11 +554,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/blog/2020/04/06/indexedDB/">
-      indexedDB使用方法
+  <h1 class="title">
+    <a href="/blog/2021/03/31/webInterview/">
+      webInterview
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -592,14 +579,6 @@
           
             
               
-  
-  <div class='new-meta-item category'>
-    <a href='/blog/categories/web/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>web</p>
-    </a>
-  </div>
-
 
             
           
@@ -607,26 +586,9 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年4月6日</p>
+    <p>发布于：2021年3月31日</p>
   </a>
 </div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  
-
-
-            
-          
-            
-              
 
             
           
@@ -644,240 +606,313 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>IndexedDB简单理解就是前端数据库，提供了一种在用户浏览器中持久存储数据的方法，但是和前端关系型数据不同的是，IndexedDB采用的key-value键值对存储，这种存储形式的数据库查询更简单快速，IndexedDB分别为同步和异步访问提供了单独的API，但是同步API仅提供在web worker内部使用，因此绝大多数情况，我们使用的都是异步API，同时IndexedDB也无法突破同源策略的限制，只能访问在同域下的数据。</p>
-      
-    </div>
-    
-      
-        <a class= "readmore" href="/blog/2020/04/06/indexedDB/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
           
-  <h2 class="title">
-    <a href="/blog/2020/02/12/hexoNotice/">
-      解决hexo分类和标签页面空白页的问题
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
           
-            
+          <h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><ol>
+<li><p>js数据类型以及如何判断数据类型</p>
+<p> 基本数据类型： string number boolean null undefined symbol<br> 引用数据类型：object<br> 判断数据类型常用的是typeof、instanceof(可以准确的判断对象的类型)</p>
+</li>
+<li><p>作用域和作用域链</p>
+<p> 含义：定义变量的区域，有一套访问变量的规则，根据这规则来管理浏览器引擎如何在当前作用域和嵌套作用域根据变量进行变量查找<br> 作用域的分类：全局作用域、函数作用域、块作用域<br> 作用域链： 当js使用一个变量的时候，会先在当前作用域寻找该变量，如何当前作用域找不到，则回到上一级作用域去寻找，以此类推知道找到该变量</p>
+</li>
+<li><p>this</p>
+<blockquote>
+<p>在全局范围内, this指向的是window<br>函数中this指的是调用他的那个对象（箭头函数特殊）<br>构造函数中，this指向的是new出来的新对象<br>call, apply中，this被绑定在指定的对象<br>箭头函数中，this指向的是函数定义时作用域的this</p>
+</blockquote>
+</li>
+<li><p>原型与原型链</p>
+<p> 4.1 构造函数<br>   ES的构造函数其实就是能创建对象的函数,使用new调用的函数是构造函数，直接调用的则是普通函数</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age, job) &#123;</span><br><span class="line">  this.name &#x3D; name;</span><br><span class="line">  this.age &#x3D; age;</span><br><span class="line">  this.job &#x3D; job;</span><br><span class="line">  this.sayName &#x3D; function() &#123; alert(this.name) &#125; </span><br><span class="line">&#125;</span><br><span class="line">var person1 &#x3D; new Person(&#39;Zaxlct&#39;, 28, &#39;Software Engineer&#39;);</span><br><span class="line">var person2 &#x3D; new Person(&#39;Mick&#39;, 23, &#39;Doctor&#39;);</span><br></pre></td></tr></table></figure>
+
+<p>   person1和person2都是person的实例，这两个实例都有一个<i style="color: red">constructor</i>(即构造函数)，该属性指向Person,换句话说就是实例的构造函数属性指向构造函数<br>   其实person1和person2也是Object的实例，因为所有自定义对象都是继承于Object</p>
+<p>   constructor其实是用来标识对象类型的，但实际上一般使用instanceof来确定对象类型，所以如下表达式成立</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(person1.constructor &#x3D;&#x3D; Person); &#x2F;&#x2F;true</span><br><span class="line">console.log(person2.constructor &#x3D;&#x3D; Person); &#x2F;&#x2F;true</span><br><span class="line">console.log(person1 instanceof Object); &#x2F;&#x2F; true</span><br><span class="line">console.log(person1 instanceof Person)  &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+
+<p> 4.2 原型对象<br>   js中每定义一个对象（函数也是对象）时，对象中都会包含一些预先定义的属性，当定义函数对象时，就会被包含prototype属性，该属性指向函数的原型对象<br>   Object.getPrototypeOf() 可以获得传入对象的原型对象</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;&#125;</span><br><span class="line">Person.prototype.name &#x3D; &#39;Zaxlct&#39;;</span><br><span class="line">Person.prototype.age  &#x3D; 28;</span><br><span class="line">Person.prototype.job  &#x3D; &#39;Software Engineer&#39;;</span><br><span class="line">Person.prototype.sayName &#x3D; function() &#123;</span><br><span class="line">  alert(this.name);</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">var person1 &#x3D; new Person();</span><br><span class="line">person1.sayName(); &#x2F;&#x2F; &#39;Zaxlct&#39;</span><br><span class="line"></span><br><span class="line">var person2 &#x3D; new Person();</span><br><span class="line">person2.sayName(); &#x2F;&#x2F; &#39;Zaxlct&#39;</span><br><span class="line"></span><br><span class="line">console.log(person1.sayName &#x3D;&#x3D; person2.sayName); &#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
+
+<p>   <strong>每个对象都有__proto__属性，只有函数对象才有prototype属性， 但是Function.prototype除外</strong><br>   那什么是原型对象呢？看如下代码(<i style="color: #f90">Person.prototype指向原型对象</i>)</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype &#x3D; &#123;</span><br><span class="line">  name:  &#39;Zaxlct&#39;,</span><br><span class="line">  age: 28,</span><br><span class="line">  job: &#39;Software Engineer&#39;,</span><br><span class="line">  sayName: function() &#123;</span><br><span class="line">    alert(this.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   原型对象其实就是一个普通对象，其实就是Person.prototype,甚至可以给其赋值 var a = Person.prototype,上述代码中给a添加四个属性name、age、job、sayName,但其实还有一个默认属性construcor</p>
+<ul>
+<li><p>默认情况下，所有原型对象都会有一个构造函数（constructor）属性,这个属性指向prototype所在的函数（Person），并且这个元素是个指针，即 <i style="color: #f90">Person.prototype.constructor == Person</i></p>
+</li>
+<li><p>从之前的结论可以知道实例的构造函数指向构造函数， 即 <i style="color: #90">person1.constructor == Person</i></p>
+</li>
+<li><p>换句话说，Person.prototype也是Person的实例(有待考证)，即<i style="color: #f90">原型对象是构造函数的一个实例</i></p>
+</li>
+<li><p>实例只有指向原型的指针，没有指向构造函数的指针</p>
+</li>
+<li><p>重写构造函数的原型之后，在创建的实例才会引用新的原型</p>
+<p>4.3 <strong>proto</strong><br>js在创建对象的时候都有一个叫做<i style="color: #f90"><strong>proto</strong></i>的内置属性，用于指向创建他的构造函数的原型对象</p>
+<blockquote>
+<p>person1.<strong>proto</strong>== Person.prototype</p>
+</blockquote>
+<p>4.4 构造器<br>我们可以使用 var obj = {}来创建一个对象，等同于var obj = new Object(),所以</p>
+<blockquote>
+<p>obj.constructor == Object<br>obj.<strong>proto</strong> == Object.prototype</p>
+</blockquote>
+<p>同理，创建对象的构造器不只是Object,也可以是Array,Date,Function等<br>这些构造器都是函数对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var b &#x3D; new Array();</span><br><span class="line">b.constructor &#x3D;&#x3D;&#x3D; Array;</span><br><span class="line">b.__proto__ &#x3D;&#x3D;&#x3D; Array.prototype;</span><br><span class="line"></span><br><span class="line">var c &#x3D; new Date(); </span><br><span class="line">c.constructor &#x3D;&#x3D;&#x3D; Date;</span><br><span class="line">c.__proto__ &#x3D;&#x3D;&#x3D; Date.prototype;</span><br><span class="line"></span><br><span class="line">var d &#x3D; new Function();</span><br><span class="line">d.constructor &#x3D;&#x3D;&#x3D; Function;</span><br><span class="line">d.__proto__ &#x3D;&#x3D;&#x3D; Function.prototype;</span><br></pre></td></tr></table></figure>
+<p><strong>所有函数对象的_proto_都指向Function.prototype，它是一个空函数（Empty function）</strong><br><strong>所有对象的_proto_都指向其构造器的prototype</strong><br>4.5 原型链</p>
+</li>
+<li><p>person1.<strong>proto</strong> = Person.prototype   </p>
+<blockquote>
+<p>person1的_proto_等于person1构造函数的prototype<br>person1.constructor == Person</p>
+</blockquote>
+</li>
+<li><p>Person.<strong>proto</strong> = Function.ptototype</p>
+<blockquote>
+<p>Person._proto_等于Person.constructor的prototype，<br>Person.constructor = Function</p>
+</blockquote>
+</li>
+<li><p>Person.prototype.<strong>proto</strong>  = Object.prototype</p>
+<blockquote>
+<p>Person.prototype是一个普通对象，即Object.prototype</p>
+</blockquote>
+</li>
+<li><p>Object.<strong>proto</strong>  = Function.prototype</p>
+<blockquote>
+<p>object的构造函数是Function</p>
+</blockquote>
+</li>
+<li><p>Object.prototype.<strong>proto</strong>  = null</p>
+<blockquote>
+<p>Object.prototype 对象也有proto属性,为null,因为他处于原型链的顶端</p>
+</blockquote>
+<p>4.6 函数对象<br>所有函数对象的_proto_（即所有的构造器）都指向Function.prototype，换句话说所有函数对象的构造函数都是Function<br>所有构造器都继承Function.prototype的属性及方法</p>
+<blockquote>
+<p>Function.prototype是唯一一个 <i style="color: #f90">typeof Function.prototype == Function</i>的prototype<br>其他构造器的prototype都是object<br>普通对象.<strong>proto</strong> = Function.ptototype<br>Function.prototype.<strong>proto</strong> === Object.prototype<br>Object.prototype.<strong>proto</strong> === null</p>
+</blockquote>
+<p>4.7 原型链案例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;&#125;</span><br><span class="line">var person1 &#x3D; new Person()</span><br><span class="line">person1.__proto__ &#x3D;&#x3D;&#x3D; Person.prototype</span><br><span class="line">Person.__proto__ &#x3D;&#x3D; Function.prototype            &#x2F;&#x2F; 所有函数对象的__proto__都指向Function.prototype</span><br><span class="line">Person.prototype._proto_ &#x3D;&#x3D; Object.prototype</span><br><span class="line"></span><br><span class="line">Function.__proto__ &#x3D;&#x3D; Function.prototype          &#x2F;&#x2F; Function也属于函数对象</span><br><span class="line">Function.prototype.__proto__ &#x3D;&#x3D; Object.prototype</span><br><span class="line">Object.prototype.__proto__&#x3D;&#x3D; null</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var num &#x3D; new Array()</span><br><span class="line">num.__proto__ &#x3D;&#x3D; Array.prototype</span><br><span class="line">Array.prototype.__proto__ &#x3D;&#x3D; Object.prototype</span><br><span class="line">Object.prototype.__proto__ &#x3D;&#x3D; null</span><br><span class="line">Array.__proto__ &#x3D; Function.prototype</span><br></pre></td></tr></table></figure>
+<p>4.8 hasOwnProperty、in、for in的用法</p>
+<blockquote>
+<p>hasOwnProperty() 方法用于确定某个属性是否存在于实例中，存在则返回true<br>in 可以确定某属性是否存在于原型或实例上，只要存在就返回true<br>因此只要hasOwnProperty()返回false, in 返回true,就说明该属性是原型属性<br>在 for-in 循环中使用 in 操作符时，可以通过对象访问且可以被枚举的属性都会返回，包括实例属性和原型属性<br>获得对象上所有可枚举的实例属性，使用<i style="background: #f90">Object.keys(obj)</i><br>列出所有实例属性（包含不可枚举的）可使用<i style="background: #f90">Object.getOwnPropertyNames()</i></p>
+</blockquote>
+<p>4.9 ES2017新增Object.values()和Object.entries()</p>
+<blockquote>
+<p>Object.value()返回对象值的数组<br>Object.entries()返回对象键值对的数组</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const o &#x3D; &#123;</span><br><span class="line">  foo: &#39;bar&#39;</span><br><span class="line">  ,</span><br><span class="line">  baz: 1,</span><br><span class="line">  qux: &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">console.log(Object.values(o));    &#x2F;&#x2F; [&quot;bar&quot;, 1, &#123;&#125;]</span><br><span class="line">console.log(Object.entries((o)));   &#x2F;&#x2F; [[&quot;foo&quot;,&quot;bar&quot;], [&quot;baz&quot;, 1], [&quot;qux&quot;, &#123;&#125;]]</span><br></pre></td></tr></table></figure>
+
+<p>4.10 原型链的问题</p>
+</li>
+<li><p>原型中包含的引用值会在所有实例间共享</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function SuperType() &#123;</span><br><span class="line">  this.colors &#x3D; [&quot;red&quot; , &quot;blue&quot; , &quot;green&quot;];</span><br><span class="line">&#125;</span><br><span class="line">function SubType() &#123;&#125;</span><br><span class="line">&#x2F;&#x2F; 继承SuperType</span><br><span class="line">SubType.prototype &#x3D; new SuperType();</span><br><span class="line">let instance1 &#x3D; new SubType();</span><br><span class="line">instance1.colors.push(&quot;black&quot;);</span><br><span class="line">console.log(instance1.colors); &#x2F;&#x2F; &quot;red,blue,green,black&quot;</span><br><span class="line">let instance2 &#x3D; new SubType();</span><br><span class="line">console.log(instance2.colors); &#x2F;&#x2F; &quot;red,blue,green,black&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>子类型在实例化时不能给父类型的构造函数传参</p>
+<p>4.11 盗用构造函数<br>为解决原型包含引用值导致的继承问题，“盗用构造函数”流行了起来，也叫“对象伪装”，“经典继承”<br>基本思路：在子类构造函数中通过call/apply调用父类构造函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function SuperType() &#123;</span><br><span class="line">  this.colors &#x3D; [&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;];</span><br><span class="line">&#125;</span><br><span class="line">function SubType() &#123;</span><br><span class="line">  &#x2F;&#x2F; 继承SuperType</span><br><span class="line">  SuperType.call(this);</span><br><span class="line">&#125;</span><br><span class="line">let instance1 &#x3D; new SubType();</span><br><span class="line">instance1.colors.push(&quot;black&quot;);</span><br><span class="line">console.log(instance1.colors); &#x2F;&#x2F; &quot;red,blue,green,black&quot;</span><br><span class="line">let instance2 &#x3D; new SubType();</span><br><span class="line">console.log(instance2.colors); &#x2F;&#x2F; &quot;red,blue,green&quot;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>优点：在子类构造函数中向父类构造函数传参<br>存在的问题：必须在构造函数中定义方法，因此函数不能重用</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+
           
-            
+            <div class='article_footer'>
               
-<div class='new-meta-item author'>
-  <a class='author' href="/" rel="nofollow">
-    <img no-lazy src="">
-    <p>lizeyu</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/blog/categories/web/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>web</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年2月12日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  
-
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>解决hexo分类和标签页面空白页的问题</p>
-      
-    </div>
-    
-      
-        <a class= "readmore" href="/blog/2020/02/12/hexoNotice/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
-  
-
-
-    
-  
-
-</div>
-<aside class='l_side'>
-  
+                
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
     
       
-        <a class='avatar flat-box rectangle' href='/blog/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/lizeyu66/blogImage@main/20210324181016.jpg'/>
-        </a>
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png'
+        
+          height='64px'
+        ></div>
       
     
-    
-      <div class='text'>
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png'
         
-        
-        
-          <p><span id="jinrishici-sentence">落花有意</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
+          height='64px'
+        ></div>
+      
     
   </div>
 </section>
 
   
 
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-21T11:00:22+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年4月21日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
   
+  <div class="new-meta-item meta-tags"><a class="tag" href="/blog/tags/WEB/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>WEB</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lizeyu66.github.io/2021/03/31/webInterview/&title=webInterview - 落花有意&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
     
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lizeyu66.github.io/2021/03/31/webInterview/&title=webInterview - 落花有意&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://lizeyu66.github.io/2021/03/31/webInterview/&title=webInterview - 落花有意&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/blog/2021/01/23/jsEventLoop/'>
+                <p class='title'>js事件执行机制（EventLoop）<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>概述javascript是一门单线程语言，js任务是一个一个顺序执行，分为同步任务和异步任务，同步任务会进入主线程，异步任务会进入Event Table（事件表），当时间表中的异步任务完成后就会...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
   
 
-  <section class="widget category shadow desktop">
+  
+    
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="gitalk-container"></div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/blog/categories/image/" href="/blog/categories/image/"
-            id="blogcategoriesimage"
-            ><div class='name'>image</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/blog/categories/javascript/" href="/blog/categories/javascript/"
-            id="blogcategoriesjavascript"
-            ><div class='name'>javascript</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/blog/categories/web/" href="/blog/categories/web/"
-            id="blogcategoriesweb"
-            ><div class='name'>web</div><div class='badge'>(2)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript"><span class="toc-text">JavaScript</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/blog/tags/WEB/" style="font-size: 14px; color: #999">WEB</a> <a href="/blog/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/blog/tags/image/" style="font-size: 14px; color: #999">image</a> <a href="/blog/tags/javascript/" style="font-size: 14px; color: #999">javascript</a> <a href="/blog/tags/web/" style="font-size: 24px; color: #555">web</a>
-    </div>
-  </section>
-
-
-  
 
   
 
