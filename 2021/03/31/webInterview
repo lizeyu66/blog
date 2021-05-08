@@ -26,13 +26,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>js事件执行机制（EventLoop） - 落花有意</title>
+  <title>webInterview - 落花有意</title>
   
-    <meta name="keywords" content="javascript">
+    <meta name="keywords" content="WEB">
   
 
   
-    <meta name="description" content="javascript是一门单线程语言，js任务是一个一个顺序执行，分为同步任务和异步任务，同步任务会进入主线程，异步任务会进入Event Table（事件表），当时间表中的异步任务完成后就会在Event Queue（事件队列）中注册回调函数，主线程任务全部完成后，才会执行Event Queue中的回调，js解析器会不断重复检查主线程执行栈是否为空，然后重复第3步，这就是Event Loop（事件循环）">
+    <meta name="description" content="QUESTION">
   
 
   <!-- feed -->
@@ -506,9 +506,9 @@
 
 <div id="pjax-data" style="display: none">
   <div id="pjax-ispage">true</div>
-  <div id="pjax-pageTitle">js事件执行机制（EventLoop）</div>
+  <div id="pjax-pageTitle">webInterview</div>
   <div id="pjax-enable-cover">true</div>
-  <div id="pjax-permalink">https://lizeyu66.github.io/2021/01/23/jsEventLoop/</div>
+  <div id="pjax-permalink">https://lizeyu66.github.io/2021/03/31/webInterview</div>
   
   
 </div>
@@ -555,8 +555,8 @@
         
           
   <h1 class="title">
-    <a href="/lizeyu66.github.io/2021/01/23/jsEventLoop/">
-      js事件执行机制（EventLoop）
+    <a href="/lizeyu66.github.io/2021/03/31/webInterview">
+      webInterview
     </a>
   </h1>
 
@@ -579,14 +579,6 @@
           
             
               
-  
-  <div class='new-meta-item category'>
-    <a href='/lizeyu66.github.io/categories/javascript/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>javascript</p>
-    </a>
-  </div>
-
 
             
           
@@ -594,7 +586,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2021年1月23日</p>
+    <p>发布于：2021年3月31日</p>
   </a>
 </div>
 
@@ -618,42 +610,108 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>javascript是一门单线程语言，js任务是一个一个顺序执行，分为同步任务和异步任务，同步任务会进入主线程，异步任务会进入Event Table（事件表），当时间表中的异步任务完成后就会在Event Queue（事件队列）中注册回调函数，主线程任务全部完成后，才会执行Event Queue中的回调，js解析器会不断重复检查主线程执行栈是否为空，然后重复第3步，这就是Event Loop（事件循环）</p>
-<p><img src="EventLoop.png" alt="123"></p>
-<p><strong>简单来说就是：</strong><br>  先同步后异步<br>  遇到new Promise先执行<br>  先微任务后宏任务</p>
-<h2 id="宏任务与微任务"><a href="#宏任务与微任务" class="headerlink" title="宏任务与微任务"></a>宏任务与微任务</h2><p>macro-task(宏任务)：包括整体代码script，setTimeout，setInterval, setImmediate（浏览器暂时不支持，只有IE10支持，具体可见MDN）、I/O、UI Rendering。<br>micro-task(微任务)：Promise.then，process.nextTick</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
-<li>一般的JavaScript代码（同步）的属于宏任务，定时器相关的异步代码，包括setTimeOut、setInterval等也属于宏任务，promise.then、 process.nextTick属于微任务；</li>
-<li>同步的代码会按照执行顺序顺序执行，遇到异步代码的时候，属于宏任务的放到宏队列，微任务放到微队列，其中promise需要resolve或者reject才会执行then或者catch里面的内容，其他的放到队列的属于回调函数的内容。</li>
-<li>执行顺序是宏任务-微任务-宏任务……，因为整个脚本就是一个宏任务，所以当里面宏任务和微任务同时放入队列，会先执行玩微任务再执行宏任务；前提是代码执行完毕，如果存在嵌套关系，则会先执行完该任务再执行下一个任务，如果问题复杂建议通过画图来理清楚</li>
-<li>process.nextTick只能在node环境下运行</li>
-</ol>
-<h2 id="async-await-与-Promise"><a href="#async-await-与-Promise" class="headerlink" title="async await 与 Promise"></a>async await 与 Promise</h2><ol>
-<li>async声明的必须是一个function，并且必须紧跟着function </li>
-</ol>
-<p>async function process() {<br>}</p>
-<ol start="2">
-<li>await必须在async声明的函数内部使用，必须是直系</li>
-<li>async生命的函数本质上是一个Promise</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F; 以下三个函数表达的意思一致</span><br><span class="line">const demo &#x3D;(async function() &#123;                                              </span><br><span class="line">  return &#39;我是promise&#39;                  </span><br><span class="line">&#125;) ()                                                                                           </span><br><span class="line"></span><br><span class="line">const demo &#x3D; (async function() &#123;</span><br><span class="line">  return Promise.resolve(&#39;我是promise&#39;)   </span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line">const demo &#x3D;（async function() &#123;</span><br><span class="line">  return new Promise((resolve,reject) &#x3D;&gt; &#123;</span><br><span class="line">      resolve(&#39;我是promise&#39;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)()</span><br><span class="line">&#x2F;&#x2F; 获取返回值的方法</span><br><span class="line">demo.then(res &#x3D;&gt; &#123;</span><br><span class="line">    console.log(res)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+          <h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><ol>
+<li><p>js数据类型以及如何判断数据类型</p>
+<p> 基本数据类型： string number boolean null undefined symbol<br> 引用数据类型：object<br> 判断数据类型常用的是typeof、instanceof(可以准确的判断对象的类型)</p>
+</li>
+<li><p>作用域和作用域链</p>
+<p> 含义：定义变量的区域，有一套访问变量的规则，根据这规则来管理浏览器引擎如何在当前作用域和嵌套作用域根据变量进行变量查找<br> 作用域的分类：全局作用域、函数作用域、块作用域<br> 作用域链： 当js使用一个变量的时候，会先在当前作用域寻找该变量，如何当前作用域找不到，则回到上一级作用域去寻找，以此类推知道找到该变量</p>
+</li>
+<li><p>this</p>
+<blockquote>
+<p>在全局范围内, this指向的是window<br>函数中this指的是调用他的那个对象（箭头函数特殊）<br>构造函数中，this指向的是new出来的新对象<br>call, apply中，this被绑定在指定的对象<br>箭头函数中，this指向的是函数定义时作用域的this</p>
+</blockquote>
+</li>
+<li><p>原型与原型链</p>
+<p> 4.1 构造函数<br>   ES的构造函数其实就是能创建对象的函数,使用new调用的函数是构造函数，直接调用的则是普通函数</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age, job) &#123;</span><br><span class="line">  this.name &#x3D; name;</span><br><span class="line">  this.age &#x3D; age;</span><br><span class="line">  this.job &#x3D; job;</span><br><span class="line">  this.sayName &#x3D; function() &#123; alert(this.name) &#125; </span><br><span class="line">&#125;</span><br><span class="line">var person1 &#x3D; new Person(&#39;Zaxlct&#39;, 28, &#39;Software Engineer&#39;);</span><br><span class="line">var person2 &#x3D; new Person(&#39;Mick&#39;, 23, &#39;Doctor&#39;);</span><br></pre></td></tr></table></figure>
 
-<ol start="4">
-<li>await的本质是提供等同于“同步效果”的等待异步返回能力的语法糖，实质上就是返回一个Promise</li>
-<li>await意为等一会，只要await生命的函数还没有返回，下面的内容就不会被执行，准确的说是用await声明的Promise异步返回，必须等待到有返回值之后，才继续执行以后的代码</li>
-</ol>
-<p><img src="async1.png"></p>
-<ol>
-<li>async/await的错误处理</li>
-</ol>
-<p><img src="async2.png"><br><img src="async3.png"></p>
-<ol>
-<li>async/await的终止程序（中断）  </li>
-</ol>
-<p><img src="async4.png"></p>
+<p>   person1和person2都是person的实例，这两个实例都有一个<i style="color: red">constructor</i>(即构造函数)，该属性指向Person,换句话说就是实例的构造函数属性指向构造函数<br>   其实person1和person2也是Object的实例，因为所有自定义对象都是继承于Object</p>
+<p>   constructor其实是用来标识对象类型的，但实际上一般使用instanceof来确定对象类型，所以如下表达式成立</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(person1.constructor &#x3D;&#x3D; Person); &#x2F;&#x2F;true</span><br><span class="line">console.log(person2.constructor &#x3D;&#x3D; Person); &#x2F;&#x2F;true</span><br><span class="line">console.log(person1 instanceof Object); &#x2F;&#x2F; true</span><br><span class="line">console.log(person1 instanceof Person)  &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+
+<p> 4.2 原型对象<br>   js中每定义一个对象（函数也是对象）时，对象中都会包含一些预先定义的属性，当定义函数对象时，就会被包含prototype属性，该属性指向函数的原型对象<br>   Object.getPrototypeOf() 可以获得传入对象的原型对象</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;&#125;</span><br><span class="line">Person.prototype.name &#x3D; &#39;Zaxlct&#39;;</span><br><span class="line">Person.prototype.age  &#x3D; 28;</span><br><span class="line">Person.prototype.job  &#x3D; &#39;Software Engineer&#39;;</span><br><span class="line">Person.prototype.sayName &#x3D; function() &#123;</span><br><span class="line">  alert(this.name);</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">var person1 &#x3D; new Person();</span><br><span class="line">person1.sayName(); &#x2F;&#x2F; &#39;Zaxlct&#39;</span><br><span class="line"></span><br><span class="line">var person2 &#x3D; new Person();</span><br><span class="line">person2.sayName(); &#x2F;&#x2F; &#39;Zaxlct&#39;</span><br><span class="line"></span><br><span class="line">console.log(person1.sayName &#x3D;&#x3D; person2.sayName); &#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
+
+<p>   <strong>每个对象都有__proto__属性，只有函数对象才有prototype属性， 但是Function.prototype除外</strong><br>   那什么是原型对象呢？看如下代码(<i style="color: #f90">Person.prototype指向原型对象</i>)</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype &#x3D; &#123;</span><br><span class="line">  name:  &#39;Zaxlct&#39;,</span><br><span class="line">  age: 28,</span><br><span class="line">  job: &#39;Software Engineer&#39;,</span><br><span class="line">  sayName: function() &#123;</span><br><span class="line">    alert(this.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   原型对象其实就是一个普通对象，其实就是Person.prototype,甚至可以给其赋值 var a = Person.prototype,上述代码中给a添加四个属性name、age、job、sayName,但其实还有一个默认属性construcor</p>
 <ul>
-<li>Promise本身是无法终止的，只是一个状态机，包含三种状态pending（挂起）、resolve（成功）、reject（拒绝），一旦发出请求必须结束，无法取消，想要中断的时候直接return 一个值即可，return之后的操作将都会停止</li>
+<li><p>默认情况下，所有原型对象都会有一个构造函数（constructor）属性,这个属性指向prototype所在的函数（Person），并且这个元素是个指针，即 <i style="color: #f90">Person.prototype.constructor == Person</i></p>
+</li>
+<li><p>从之前的结论可以知道实例的构造函数指向构造函数， 即 <i style="color: #90">person1.constructor == Person</i></p>
+</li>
+<li><p>换句话说，Person.prototype也是Person的实例(有待考证)，即<i style="color: #f90">原型对象是构造函数的一个实例</i></p>
+</li>
+<li><p>实例只有指向原型的指针，没有指向构造函数的指针</p>
+</li>
+<li><p>重写构造函数的原型之后，在创建的实例才会引用新的原型</p>
+<p>4.3 <strong>proto</strong><br>js在创建对象的时候都有一个叫做<i style="color: #f90"><strong>proto</strong></i>的内置属性，用于指向创建他的构造函数的原型对象</p>
+<blockquote>
+<p>person1.<strong>proto</strong>== Person.prototype</p>
+</blockquote>
+<p>4.4 构造器<br>我们可以使用 var obj = {}来创建一个对象，等同于var obj = new Object(),所以</p>
+<blockquote>
+<p>obj.constructor == Object<br>obj.<strong>proto</strong> == Object.prototype</p>
+</blockquote>
+<p>同理，创建对象的构造器不只是Object,也可以是Array,Date,Function等<br>这些构造器都是函数对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var b &#x3D; new Array();</span><br><span class="line">b.constructor &#x3D;&#x3D;&#x3D; Array;</span><br><span class="line">b.__proto__ &#x3D;&#x3D;&#x3D; Array.prototype;</span><br><span class="line"></span><br><span class="line">var c &#x3D; new Date(); </span><br><span class="line">c.constructor &#x3D;&#x3D;&#x3D; Date;</span><br><span class="line">c.__proto__ &#x3D;&#x3D;&#x3D; Date.prototype;</span><br><span class="line"></span><br><span class="line">var d &#x3D; new Function();</span><br><span class="line">d.constructor &#x3D;&#x3D;&#x3D; Function;</span><br><span class="line">d.__proto__ &#x3D;&#x3D;&#x3D; Function.prototype;</span><br></pre></td></tr></table></figure>
+<p><strong>所有函数对象的_proto_都指向Function.prototype，它是一个空函数（Empty function）</strong><br><strong>所有对象的_proto_都指向其构造器的prototype</strong><br>4.5 原型链</p>
+</li>
+<li><p>person1.<strong>proto</strong> = Person.prototype   </p>
+<blockquote>
+<p>person1的_proto_等于person1构造函数的prototype<br>person1.constructor == Person</p>
+</blockquote>
+</li>
+<li><p>Person.<strong>proto</strong> = Function.ptototype</p>
+<blockquote>
+<p>Person._proto_等于Person.constructor的prototype，<br>Person.constructor = Function</p>
+</blockquote>
+</li>
+<li><p>Person.prototype.<strong>proto</strong>  = Object.prototype</p>
+<blockquote>
+<p>Person.prototype是一个普通对象，即Object.prototype</p>
+</blockquote>
+</li>
+<li><p>Object.<strong>proto</strong>  = Function.prototype</p>
+<blockquote>
+<p>object的构造函数是Function</p>
+</blockquote>
+</li>
+<li><p>Object.prototype.<strong>proto</strong>  = null</p>
+<blockquote>
+<p>Object.prototype 对象也有proto属性,为null,因为他处于原型链的顶端</p>
+</blockquote>
+<p>4.6 函数对象<br>所有函数对象的_proto_（即所有的构造器）都指向Function.prototype，换句话说所有函数对象的构造函数都是Function<br>所有构造器都继承Function.prototype的属性及方法</p>
+<blockquote>
+<p>Function.prototype是唯一一个 <i style="color: #f90">typeof Function.prototype == Function</i>的prototype<br>其他构造器的prototype都是object<br>普通对象.<strong>proto</strong> = Function.ptototype<br>Function.prototype.<strong>proto</strong> === Object.prototype<br>Object.prototype.<strong>proto</strong> === null</p>
+</blockquote>
+<p>4.7 原型链案例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;&#125;</span><br><span class="line">var person1 &#x3D; new Person()</span><br><span class="line">person1.__proto__ &#x3D;&#x3D;&#x3D; Person.prototype</span><br><span class="line">Person.__proto__ &#x3D;&#x3D; Function.prototype            &#x2F;&#x2F; 所有函数对象的__proto__都指向Function.prototype</span><br><span class="line">Person.prototype._proto_ &#x3D;&#x3D; Object.prototype</span><br><span class="line"></span><br><span class="line">Function.__proto__ &#x3D;&#x3D; Function.prototype          &#x2F;&#x2F; Function也属于函数对象</span><br><span class="line">Function.prototype.__proto__ &#x3D;&#x3D; Object.prototype</span><br><span class="line">Object.prototype.__proto__&#x3D;&#x3D; null</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var num &#x3D; new Array()</span><br><span class="line">num.__proto__ &#x3D;&#x3D; Array.prototype</span><br><span class="line">Array.prototype.__proto__ &#x3D;&#x3D; Object.prototype</span><br><span class="line">Object.prototype.__proto__ &#x3D;&#x3D; null</span><br><span class="line">Array.__proto__ &#x3D; Function.prototype</span><br></pre></td></tr></table></figure>
+<p>4.8 hasOwnProperty、in、for in的用法</p>
+<blockquote>
+<p>hasOwnProperty() 方法用于确定某个属性是否存在于实例中，存在则返回true<br>in 可以确定某属性是否存在于原型或实例上，只要存在就返回true<br>因此只要hasOwnProperty()返回false, in 返回true,就说明该属性是原型属性<br>在 for-in 循环中使用 in 操作符时，可以通过对象访问且可以被枚举的属性都会返回，包括实例属性和原型属性<br>获得对象上所有可枚举的实例属性，使用<i style="background: #f90">Object.keys(obj)</i><br>列出所有实例属性（包含不可枚举的）可使用<i style="background: #f90">Object.getOwnPropertyNames()</i></p>
+</blockquote>
+<p>4.9 ES2017新增Object.values()和Object.entries()</p>
+<blockquote>
+<p>Object.value()返回对象值的数组<br>Object.entries()返回对象键值对的数组</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const o &#x3D; &#123;</span><br><span class="line">  foo: &#39;bar&#39;</span><br><span class="line">  ,</span><br><span class="line">  baz: 1,</span><br><span class="line">  qux: &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">console.log(Object.values(o));    &#x2F;&#x2F; [&quot;bar&quot;, 1, &#123;&#125;]</span><br><span class="line">console.log(Object.entries((o)));   &#x2F;&#x2F; [[&quot;foo&quot;,&quot;bar&quot;], [&quot;baz&quot;, 1], [&quot;qux&quot;, &#123;&#125;]]</span><br></pre></td></tr></table></figure>
+
+<p>4.10 原型链的问题</p>
+</li>
+<li><p>原型中包含的引用值会在所有实例间共享</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function SuperType() &#123;</span><br><span class="line">  this.colors &#x3D; [&quot;red&quot; , &quot;blue&quot; , &quot;green&quot;];</span><br><span class="line">&#125;</span><br><span class="line">function SubType() &#123;&#125;</span><br><span class="line">&#x2F;&#x2F; 继承SuperType</span><br><span class="line">SubType.prototype &#x3D; new SuperType();</span><br><span class="line">let instance1 &#x3D; new SubType();</span><br><span class="line">instance1.colors.push(&quot;black&quot;);</span><br><span class="line">console.log(instance1.colors); &#x2F;&#x2F; &quot;red,blue,green,black&quot;</span><br><span class="line">let instance2 &#x3D; new SubType();</span><br><span class="line">console.log(instance2.colors); &#x2F;&#x2F; &quot;red,blue,green,black&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>子类型在实例化时不能给父类型的构造函数传参</p>
+<p>4.11 盗用构造函数<br>为解决原型包含引用值导致的继承问题，“盗用构造函数”流行了起来，也叫“对象伪装”，“经典继承”<br>基本思路：在子类构造函数中通过call/apply调用父类构造函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function SuperType() &#123;</span><br><span class="line">  this.colors &#x3D; [&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;];</span><br><span class="line">&#125;</span><br><span class="line">function SubType() &#123;</span><br><span class="line">  &#x2F;&#x2F; 继承SuperType</span><br><span class="line">  SuperType.call(this);</span><br><span class="line">&#125;</span><br><span class="line">let instance1 &#x3D; new SubType();</span><br><span class="line">instance1.colors.push(&quot;black&quot;);</span><br><span class="line">console.log(instance1.colors); &#x2F;&#x2F; &quot;red,blue,green,black&quot;</span><br><span class="line">let instance2 &#x3D; new SubType();</span><br><span class="line">console.log(instance2.colors); &#x2F;&#x2F; &quot;red,blue,green&quot;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>优点：在子类构造函数中向父类构造函数传参<br>存在的问题：必须在构造函数中定义方法，因此函数不能重用</p>
+</blockquote>
+</li>
 </ul>
+</li>
+</ol>
 
           
             <div class='article_footer'>
@@ -718,10 +776,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-26T10:36:22+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-21T11:00:22+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年3月26日</p>
+    <p>更新于：2021年4月21日</p>
   </a>
 </div>
 
@@ -730,7 +788,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/lizeyu66.github.io/tags/javascript/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>javascript</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/lizeyu66.github.io/tags/WEB/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>WEB</p></a></div>
 
 
         
@@ -748,7 +806,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lizeyu66.github.io/2021/01/23/jsEventLoop/&title=js事件执行机制（EventLoop） - 落花有意&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lizeyu66.github.io/2021/03/31/webInterview&title=webInterview - 落花有意&summary="
           
           >
           
@@ -760,7 +818,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lizeyu66.github.io/2021/01/23/jsEventLoop/&title=js事件执行机制（EventLoop） - 落花有意&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lizeyu66.github.io/2021/03/31/webInterview&title=webInterview - 落花有意&summary="
           
           >
           
@@ -772,7 +830,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://lizeyu66.github.io/2021/01/23/jsEventLoop/&title=js事件执行机制（EventLoop） - 落花有意&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://lizeyu66.github.io/2021/03/31/webInterview&title=webInterview - 落花有意&summary="
           
           >
           
@@ -796,19 +854,10 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/lizeyu66.github.io/2021/03/31/webInterview/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>webInterview</p>
-                <p class='content'>JavaScript
-js数据类型以及如何判断数据类型
- 基本数据类型： string number boolean null undefined symbol 引用数据类型：object 判断...</p>
-              </a>
             
-            
-              <a class='next' href='/lizeyu66.github.io/2020/04/30/chromeProblem/'>
-                <p class='title'>chrome跨域请求携带cookie丢失问题(80版本之后)<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>针对测试环境的解决方法
-打开chrome 输入 chrome://flags/   
-搜索 SameSite by default cookies 以及  Cookies without Sam...</p>
+              <a class='next' href='/lizeyu66.github.io/2021/01/23/jsEventLoop'>
+                <p class='title'>js事件执行机制（EventLoop）<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>概述javascript是一门单线程语言，js任务是一个一个顺序执行，分为同步任务和异步任务，同步任务会进入主线程，异步任务会进入Event Table（事件表），当时间表中的异步任务完成后就会...</p>
               </a>
             
           </div>
@@ -860,7 +909,7 @@ js数据类型以及如何判断数据类型
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8F%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%BE%AE%E4%BB%BB%E5%8A%A1"><span class="toc-text">宏任务与微任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async-await-%E4%B8%8E-Promise"><span class="toc-text">async await 与 Promise</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript"><span class="toc-text">JavaScript</span></a></li></ol>
     </div>
   </section>
 
@@ -910,16 +959,16 @@ js数据类型以及如何判断数据类型
       
     
       
-        <div><p>Blog content follows the <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+        <div><p>博客內容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW">姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0) 協議</a></p>
 </div>
       
     
       
-        Use
+        本站使用
         <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
-        as theme, total visits
+        作為主題，總訪問量為
           <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-          times
+          次
         
       
     
