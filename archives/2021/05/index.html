@@ -28,7 +28,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Tag: hexo - 落花有意</title>
+  <title>Archive: 2021/5 - 落花有意</title>
   
 
   
@@ -494,7 +494,7 @@
   
 
 
-              <div class="l_body nocover">
+              <div class="l_body">
                 <div class='body-wrapper' id="pjax-container">
                   
                     <!--此文件用来存放一些不方便取值的变量-->
@@ -514,16 +514,16 @@
 
 <script>
   // 处理封面 此时 jquery 还没加载
-  if ("none" == "none") { // 移除封面
+  if ("blog" == "none") { // 移除封面
     document.getElementsByClassName('cover')[0].style.display = "none";
     document.getElementsByClassName('l_body')[0].classList.add("nocover");
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
   } else {
-    if ("none" == "blog") { // 半屏
+    if ("blog" == "blog") { // 半屏
       document.getElementsByClassName('cover')[0].classList.remove("full");
       document.getElementsByClassName('cover')[0].classList.add("half");
       document.getElementsByClassName('scroll-down')[0].style.display = "none";
-    } else if ("none" == "docs") { // 全屏
+    } else if ("blog" == "docs") { // 全屏
       document.getElementsByClassName('cover')[0].classList.remove("half");
       document.getElementsByClassName('cover')[0].classList.add("full");
       document.getElementsByClassName('scroll-down')[0].style.display = "";
@@ -537,11 +537,9 @@
                       
                         
 
-
 <div class='l_main'>
-  
-    
-      
+	
+		
   <section class="post-list ">
     
       
@@ -566,8 +564,8 @@
         
           
   <h2 class="title">
-    <a href="/blog/2020/02/12/hexoNotice/">
-      解决hexo分类和标签页面空白页的问题
+    <a href="/blog/2021/05/19/vueReview/">
+      vueReview
     </a>
   </h2>
 
@@ -590,14 +588,6 @@
           
             
               
-  
-  <div class='new-meta-item category'>
-    <a href='/blog/categories/web/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>web</p>
-    </a>
-  </div>
-
 
             
           
@@ -605,7 +595,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年2月12日</p>
+    <p>发布于：2021年5月19日</p>
   </a>
 </div>
 
@@ -645,14 +635,10 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>解决hexo分类和标签页面空白页的问题</p>
+        
       
     </div>
     
-      
-        <a class= "readmore" href="/blog/2020/02/12/hexoNotice/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
       
     
   </section>
@@ -672,8 +658,7 @@
   
 
 
-    
-  
+	
 </div>
 <aside class='l_side'>
   
@@ -771,6 +756,15 @@
 
 
 </aside>
+
+
+
+
+
+	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+	
+
+	
 
 
                 </div>
