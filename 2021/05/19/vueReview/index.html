@@ -6,8 +6,7 @@
     rel='stylesheet' type='text/css' />
   <link href='https://cdn.repository.webfont.com/webfonts/nomal/143922/46714/60617c38f629d8f374d8332f.css'
     rel='stylesheet' type='text/css' />
-  <link href='https://at.alicdn.com/t/font_2451831_pzvk3konf2.css
-    rel=' stylesheet' type='text/css' />
+  <link href='https://at.alicdn.com/t/font_2451831_pzvk3konf2.css' rel='stylesheet' type='text/css' />
 
 </head>
 <head hexo-theme='https://volantis.js.org/#3.0-beta2'>
@@ -31,6 +30,8 @@
     <meta name="keywords" content="Vuejs">
   
 
+  
+    <meta name="description" content="记录一些面试中会问到的vue问题，一些答案纯属个人理解，如有偏差，还请各位大佬多多指出">
   
 
   <!-- feed -->
@@ -608,7 +609,48 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          
+          <h2 id="vue常见问题"><a href="#vue常见问题" class="headerlink" title="vue常见问题"></a>vue常见问题</h2><p><b style="color: #ff8080; ">01. 对SPA的理解</b><br>    SPA(single-page-application)简单来说就是单页面应用，仅在web页面初始化的时候加载html,css等资源，页面中模块的切换使用路由机制来实现<br>    优点： 用户体验好，切换内容无需刷新整个页面、相对于服务器压力小、前后端职责分离架构清晰<br>    缺点： 首次加载耗时大，部分页面按需加载、不利于SEO</p>
+<p><b style="color: #ff8080; ">02. 对Vue响应式系统的理解</b><br>    Vue是MVVM框架，当data变化时，视图会响应更新，原理是对data的setter/getter方法进行拦截（通过Object.defineProperty或者Proxy）,利用发布订阅的设计模式，setter进行发布，getter进行订阅。</p>
+<p><b style="color: #ff8080; ">03. computed与watch的区别</b><br>    computed和watch都可以用来观察属性的变化</p>
+<ul>
+<li>computed更多的是作为缓存功能的观察者，换句话说就是异步的，他可以将一个或多个属性通过计算生成新的值，当依赖的属性变化时，不会立马计算生成新的值，而是会先标记为脏数据，下次computed被获取的时候，才会重新计算并返回，适用于数值计算等功能</li>
+<li>watch是当属性发生变化时，会立即执行该函数，适用于数据变化执行较大的异步操作等功能</li>
+</ul>
+<p><b style="color: #ff8080; ">04. v-show与v-if的区别</b></p>
+<ul>
+<li>v-if是真正的条件渲染，当初始渲染条件为假时，则不会渲染，直到条件第一次为真时才会渲染元素，每次切换过程中组件都会被销毁和重建</li>
+<li>v-show不管条件是什么，元素总会被渲染，只是基于CSS的display进行切换</li>
+<li>如果内容切换频繁，建议使用v-show,反之，则建议使用v-if</li>
+</ul>
+<p><b style="color: #ff8080; ">05. 组件的data为何必须是个函数</b><br>    一个组件可能会创建多个实例，如果data是个对象，在一个实例中修改了data，别的实例的data也会被修改，所以每个实例必须是自己单独的data，使用函数可以使组件之间的data互不影响</p>
+<p><b style="color: #ff8080; ">06. Vue的生命周期</b><br>    beforeCreate new Vue()之后触发的第一个钩子，此时的data,methods,computed,watch方法都无法使用<br>    created 实例创建完成之后，当前阶段完成率数据监测，可以使用和修改数据，但是不会触发updated函数，可以做一些数据初始化操作，但无法与dom交互<br>    beforeMount 实例挂载之前，template已导入渲染函数编译， 虚拟dom已经创建完成，此时也可以使用和修改数据，不会触发updated函数<br>    mounted  挂载完成之后，真实dom挂载完成，实现了双向绑定，可以访问到dom节点并进行交互<br>    beforeUpdate 更新之前，响应式数据发生更新，虚拟dom重新渲染之前被触发，当前阶段更新数据不会被重新渲染<br>    updated 更新完成之后，当前阶段dom已完成更新，此期间避免更新数据，不然会导致无限循环的更新<br>    beforeDestroy 实例销毁之前，此时的实例还可以使用，可以做一些善后工作，比如清除定时器等<br>    destoryed 实例销毁之后，组件已被拆解，数据绑定被卸除，监听被移除，只剩下dom空壳</p>
+<p><b style="color: #ff8080; ">07. 组件之间如何通信</b></p>
+<ul>
+<li>父子组件通信<br>父组件 ==&gt;&gt; 子组件  使用prop<br>子组件 ==&gt;&gt; 父组件 使用$emit/$on</li>
+<li>兄弟组件<ul>
+<li>创建一个中间组件bus.js，用作通信的桥梁</li>
+<li>需要传值的组件中用bus.$emit触发一个自定义事件，并传递参数</li>
+<li>需要接收的组件中用bus.$on监听自定义事件，并在回调函数中处理传过来的参数</li>
+</ul>
+</li>
+<li>跨级组件<br>  使用provide/inject实现（不论组件层级多深都能访问到）<br>  需要传值的组件中定义provide方法，返回一个对象<br>  接受组件中用inject:[ name ]接收</li>
+</ul>
+<p><b style="color: #ff8080; ">08. 对vue单向数据流的理解</b><br>    vue的prop使得父子之间形成一个单向向下的数据流，父级prop的更新会向下流动到子组件，但是反之则不行。这样可以防止子组件意外修改父组件的值，每次父组件更新时，子组件的prop都会刷新为最新的值，因此不能在子组件内部修改prop的值，只能通过$emit派发一个自定义事件，父组件接收之后由父组件修改</p>
+<p><b style="color: #ff8080; ">09. Vue中如何能检测到数组赋值变化</b></p>
+<ul>
+<li><p>使用索引值设置一个数组项<br>  vue.set(vm.items, index, newVal)<br>  vm.$set(vm.items, index, newVal)<br>  vm.items.splice(index, 1, newVal)</p>
+</li>
+<li><p>修改数组长度<br>  vm.items.splice(newLength)</p>
+</li>
+</ul>
+<p><b style="color: #ff8080; ">10. slot的使用</b></p>
+<ul>
+<li>默认插槽（又称匿名插槽）</li>
+<li>具名插槽</li>
+<li>作用域插槽</li>
+</ul>
+<p><b style="color: #ff8080; ">11. productionSourceMap: false的作用</b><br>    如果设置为true的话，打包过后会生成一些map文件，通过这些文件可以查看到源码，设置为false可以减少源码泄露的风险</p>
+
           
             <div class='article_footer'>
               
@@ -672,10 +714,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-19T14:17:15+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-26T15:05:00+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年5月19日</p>
+    <p>更新于：2021年5月26日</p>
   </a>
 </div>
 
@@ -796,6 +838,20 @@ js数据类型以及如何判断数据类型
     
 
 
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vue%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">vue常见问题</span></a></li></ol>
+    </div>
+  </section>
 
 
   

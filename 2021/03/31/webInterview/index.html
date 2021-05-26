@@ -6,8 +6,7 @@
     rel='stylesheet' type='text/css' />
   <link href='https://cdn.repository.webfont.com/webfonts/nomal/143922/46714/60617c38f629d8f374d8332f.css'
     rel='stylesheet' type='text/css' />
-  <link href='https://at.alicdn.com/t/font_2451831_pzvk3konf2.css
-    rel=' stylesheet' type='text/css' />
+  <link href='https://at.alicdn.com/t/font_2451831_pzvk3konf2.css' rel='stylesheet' type='text/css' />
 
 </head>
 <head hexo-theme='https://volantis.js.org/#3.0-beta2'>
@@ -706,8 +705,15 @@
 <p>4.11 盗用构造函数<br>为解决原型包含引用值导致的继承问题，“盗用构造函数”流行了起来，也叫“对象伪装”，“经典继承”<br>基本思路：在子类构造函数中通过call/apply调用父类构造函数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function SuperType() &#123;</span><br><span class="line">  this.colors &#x3D; [&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;];</span><br><span class="line">&#125;</span><br><span class="line">function SubType() &#123;</span><br><span class="line">  &#x2F;&#x2F; 继承SuperType</span><br><span class="line">  SuperType.call(this);</span><br><span class="line">&#125;</span><br><span class="line">let instance1 &#x3D; new SubType();</span><br><span class="line">instance1.colors.push(&quot;black&quot;);</span><br><span class="line">console.log(instance1.colors); &#x2F;&#x2F; &quot;red,blue,green,black&quot;</span><br><span class="line">let instance2 &#x3D; new SubType();</span><br><span class="line">console.log(instance2.colors); &#x2F;&#x2F; &quot;red,blue,green&quot;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>优点：在子类构造函数中向父类构造函数传参<br>存在的问题：必须在构造函数中定义方法，因此函数不能重用</p>
+<p>优点：在子类构造函数中向父类构造函数传参<br>存在的问题：必须在构造函数中定义方法，因此函数不能重用<br>4.12 new做了什么</p>
 </blockquote>
+<ul>
+<li>创建了一个全新的对象</li>
+<li>该对象会被执行[prototype]链接</li>
+<li>生成的新对象会绑定到函数调用的this</li>
+<li>通过new创建的对象最终都会被[prototype]链接到该函数的原型（也就是prototype）对象上</li>
+<li>如果函数没有返回对象Object(包含Function、Array等)，那么new表达式中的函数调用会自动返回这个新函数</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -776,10 +782,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-21T11:00:22+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-26T11:30:07+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年4月21日</p>
+    <p>更新于：2021年5月26日</p>
   </a>
 </div>
 
@@ -856,7 +862,7 @@
             
               <a class='prev' href='/blog/2021/05/19/vueReview/'>
                 <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>vueReview</p>
-                <p class='content'></p>
+                <p class='content'>vue常见问题01. 对SPA的理解    SPA(single-page-application)简单来说就是单页面应用，仅在web页面初始化的时候加载html,css等资源，页面中模块的切换...</p>
               </a>
             
             
